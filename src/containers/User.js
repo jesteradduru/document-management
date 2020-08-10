@@ -5,6 +5,7 @@ import DocumentLists from "../components/DocumentLists/DocumentLists";
 import Controls from "../components/Controls/Controls";
 import DateTime from "../components/DateTime/DateTime";
 import ComposeForm from "../components/ComposeForm/ComposeForm";
+import ViewDoc from "../components/ViewDoc/ViewDoc";
 
 class User extends React.Component {
   constructor() {
@@ -58,6 +59,9 @@ class User extends React.Component {
               </Route>
               <Route exact path="/compose">
                 <ComposeForm />
+              </Route>
+              <Route exact path="/viewdoc">
+                <ViewDoc />
               </Route>
             </Switch>
           </div>

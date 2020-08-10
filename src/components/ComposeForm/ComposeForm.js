@@ -1,5 +1,7 @@
 import React from "react";
 import { FormGroup, Input, Button } from "reactstrap";
+import { Link } from "react-router-dom";
+import PrevPage from "../PrevPage/PrevPage";
 
 const ComposeForm = () => {
   return (
@@ -17,6 +19,11 @@ const ComposeForm = () => {
       </FormGroup>
       <FormGroup>
         <Button color="success">Send</Button>
+        <Link to="/incoming">
+          <PrevPage color="danger" className="ml-3">
+            Cancel
+          </PrevPage>
+        </Link>
       </FormGroup>
     </>
   );

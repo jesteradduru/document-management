@@ -1,14 +1,31 @@
 import React from "react";
 import Clock from "react-live-clock";
+import { useLocation } from "react-router-dom";
 
 const DateTime = () => {
+  let location = useLocation();
+  const currentLocation = () => {
+    switch (location.pathname) {
+      case "/incoming":
+        return <h1>Incoming</h1>;
+      case "/onprocess":
+        return <h1>On Process</h1>;
+      case "/outgoing":
+        return <h1>Outgoing</h1>;
+      default:
+        return <h1></h1>;
+    }
+  };
   return (
-    <div
-      className="d-flex flex-column text-right font-weight-bolder pb-4"
-      style={{ fontSize: "1.4em" }}
-    >
-      <Clock format={"MM/DD/YYYY"} ticking={true} timezone={"Asia/Manila"} />
-      <Clock format={"hh:mm:ss"} ticking={true} timezone={"Asia/Manila"} />
+    <div className="d-flex justify-content-between">
+      <h1>{currentLocation()}</h1>
+      <div
+        className="d-flex flex-column text-right font-weight-bolder pb-4"
+        style={{ fontSize: "1.4em" }}
+      >
+        <Clock format={"MM/DD/YYYY"} ticking={true} timezone={"Asia/Manila"} />
+        <Clock format={"hh:mm:ss"} ticking={true} timezone={"Asia/Manila"} />
+      </div>
     </div>
   );
 };

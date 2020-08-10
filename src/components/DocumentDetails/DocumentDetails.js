@@ -9,7 +9,7 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
-
+import { Link } from "react-router-dom";
 const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
   const BUTTONS = (status) => {
     if (status === "PENDING") {
@@ -26,10 +26,12 @@ const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
     } else if (status === "ONPROCESS") {
       return (
         <>
-          <Button color="primary">Edit</Button>{" "}
+          <Link to="/viewdoc">
+            <Button color="primary">View</Button>
+          </Link>
           <Button color="success" disabled onClick={toggle}>
             Send
-          </Button>{" "}
+          </Button>
           <Button color="secondary" onClick={toggle}>
             Close
           </Button>
@@ -43,9 +45,14 @@ const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
   const sendDocForm = (status) => {
     if (status === "ONPROCESS") {
       return (
-        <FormGroup>
-          <Input type="file" />
-        </FormGroup>
+        <>
+          <FormGroup>
+            <Input type="file" />
+          </FormGroup>
+          <FormGroup>
+            <Input type="textarea" placeholder="Remarks" />
+          </FormGroup>
+        </>
       );
     }
   };
