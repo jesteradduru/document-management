@@ -17,10 +17,10 @@ const DateTime = () => {
     }
   };
   return (
-    <div className="d-flex justify-content-between">
-      <h1>{currentLocation()}</h1>
+    <div className="d-flex justify-content-between align-items-center px-5 mb-4 bg-dark py-3 text-light">
+      <di>{currentLocation()}</di>
       <div
-        className="d-flex flex-column text-right font-weight-bolder pb-4"
+        className="d-flex flex-column justify-content-between text-right font-weight-bolder text-danger"
         style={{ fontSize: "1.4em" }}
       >
         <Clock format={"MM/DD/YYYY"} ticking={true} timezone={"Asia/Manila"} />

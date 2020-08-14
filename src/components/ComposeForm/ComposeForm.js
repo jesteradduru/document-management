@@ -20,9 +20,7 @@ const ComposeForm = () => {
       <FormGroup>
         <Button color="success">Send</Button>
         <Link to="/incoming">
-          <PrevPage color="danger" className="ml-3">
-            Cancel
-          </PrevPage>
+          <PrevPage color="danger" className="ml-3" text="Go Back" />
         </Link>
       </FormGroup>
     </>

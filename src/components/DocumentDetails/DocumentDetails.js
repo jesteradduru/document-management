@@ -9,7 +9,7 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
   const BUTTONS = (status) => {
     if (status === "PENDING") {
@@ -26,9 +26,7 @@ const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
     } else if (status === "ONPROCESS") {
       return (
         <>
-          <Link to="/viewdoc">
-            <Button color="primary">View</Button>
-          </Link>
+          <Button color="primary">Download & Edit</Button>
           <Button color="success" disabled onClick={toggle}>
             Send
           </Button>
