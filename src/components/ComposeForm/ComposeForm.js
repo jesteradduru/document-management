@@ -6,8 +6,6 @@ import PrevPage from "../PrevPage/PrevPage";
 const ComposeForm = () => {
   return (
     <>
-      <h1>Compose</h1>
-      <hr />
       <FormGroup>
         <Input type="text" placeholder="Filename" />
       </FormGroup>

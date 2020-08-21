@@ -57,11 +57,12 @@ const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
   return (
     <div>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Fund Request</ModalHeader>
+        <ModalHeader toggle={toggle}></ModalHeader>
         <ModalBody>
-          <p className="lead text-primary">
-            File Number: {docDetails.fileNumber}
-          </p>
+          <div className="d-flex justify-content-between">
+            <h5>{docDetails.fileName}</h5>
+            <h5>{docDetails.fileNumber}</h5>
+          </div>
           <Table bordered>
             <thead>
               <tr>

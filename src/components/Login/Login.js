@@ -1,5 +1,6 @@
 import React from "react";
 import { Input, Button, Card, FormGroup, Form } from "reactstrap";
+import { Link } from "react-router-dom";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Loader from "../Loader/Loader";
 class Login extends React.Component {
@@ -50,10 +51,11 @@ class Login extends React.Component {
   render() {
     return (
       <Card
-        className="mx-auto py-5 px-4 shadow mt-md-5 my-5"
+        className="mx-auto pt-4 px-4 shadow mt-md-5 bg-dark shadow pb-3"
         style={{ maxWidth: "330px" }}
       >
-        <h1 className="text-center text-primary">Login</h1>
+        <h3 className="text-center text-primary">Document Management System</h3>
+        <p className="text-center text-secondary">LOGIN</p>
         <hr />
         <Form
           onSubmit={(event) => {
@@ -64,6 +66,7 @@ class Login extends React.Component {
             <Input
               type="text"
               placeholder="Username"
+              className="form-control bg-dark border border-secondary text-secondary"
               onKeyUp={this.onUsernameChange}
             />
           </FormGroup>
@@ -71,6 +74,7 @@ class Login extends React.Component {
             <Input
               type="password"
               placeholder="Password"
+              className="form-control bg-dark border border-secondary text-secondary"
               onKeyUp={this.onPasswordChange}
             />
           </FormGroup>
@@ -83,7 +87,12 @@ class Login extends React.Component {
             />
           </FormGroup>
           <ErrorMessage errMsg={this.state.error} />
-          <Button color="primary" type="submit" className="mx-auto d-block">
+          <Link to="/register">You don't have an account? Register</Link>
+          <Button
+            color="primary"
+            type="submit"
+            className="mx-auto d-block mt-3"
+          >
             Login
           </Button>
         </Form>

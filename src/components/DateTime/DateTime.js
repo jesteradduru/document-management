@@ -12,6 +12,8 @@ const DateTime = () => {
         return <h1>On Process</h1>;
       case "/outgoing":
         return <h1>Outgoing</h1>;
+      case "/compose":
+        return <h1>Compose</h1>;
       default:
         return <h1></h1>;
     }
