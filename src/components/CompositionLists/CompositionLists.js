@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import { Table } from "reactstrap";
 import Document from "../Document/Document";
-import DocumentDetails from "../DocumentDetails/DocumentDetails";
-import "./DocumentList.css";
 import DOCUMENTS from "../../containers/documents";
-
-const DocumentLists = ({ status, showDocDetails, docDetails, checked }) => {
+import DocumentDetails from "../DocumentDetails/DocumentDetails";
+import { useParams } from "react-router-dom";
+const CompositionLists = ({ status, showDocDetails, docDetails }) => {
+  let { approval } = useParams();
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
   const document = DOCUMENTS.filter(
-    (document) => document.status === status && document.checked === checked
+    (document) => document.checked === approval.toUpperCase()
   ).map((document) => {
     return (
       <Document
@@ -17,12 +17,13 @@ const DocumentLists = ({ status, showDocDetails, docDetails, checked }) => {
         from={document.from}
         to={document.to}
         fileNumber={document.fileNumber}
-        document={document}
         toggle={toggle}
+        document={document}
+        showDocDetails={showDocDetails}
+        checked={approval.toUpperCase()}
       />
     );
   });
-
   return (
     <div>
       <Table responsive hover bordered>
@@ -36,8 +37,13 @@ const DocumentLists = ({ status, showDocDetails, docDetails, checked }) => {
         </thead>
         <tbody>{document}</tbody>
       </Table>
-      <DocumentDetails modal={modal} toggle={toggle} />
+      <DocumentDetails
+        modal={modal}
+        toggle={toggle}
+        docDetails={docDetails}
+        status={status}
+      />
     </div>
   );
 };
-export default DocumentLists;
+export default CompositionLists;

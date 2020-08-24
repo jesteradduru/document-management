@@ -15,6 +15,14 @@ const NavBar = () => {
 
       <Nav vertical className="border-top mt-4">
         <NavItem>
+          <Link
+            className="nav-link bg-dark text-light"
+            to={"/compositions/pending"}
+          >
+            Compositions <Badge color="primary">2</Badge>
+          </Link>
+        </NavItem>
+        <NavItem>
           <Link className="nav-link bg-dark text-light" to={"/incoming"}>
             Incoming <Badge color="primary">2</Badge>
           </Link>

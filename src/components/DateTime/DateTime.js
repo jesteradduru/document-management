@@ -5,15 +5,17 @@ import { useLocation } from "react-router-dom";
 const DateTime = () => {
   let location = useLocation();
   const currentLocation = () => {
-    switch (location.pathname) {
-      case "/incoming":
+    switch (location.pathname.split("/")[1]) {
+      case "incoming":
         return <h1>Incoming</h1>;
-      case "/onprocess":
+      case "onprocess":
         return <h1>On Process</h1>;
-      case "/outgoing":
+      case "outgoing":
         return <h1>Outgoing</h1>;
-      case "/compose":
+      case "compose":
         return <h1>Compose</h1>;
+      case "compositions":
+        return <h1>Compositions</h1>;
       default:
         return <h1></h1>;
     }

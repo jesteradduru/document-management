@@ -9,8 +9,19 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
-// import { Link } from "react-router-dom";
-const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => ({
+  documentDetails: state.viewDocDetails.documentDetails,
+});
+
+const DocumentDetails = ({
+  className,
+  modal,
+  toggle,
+  documentDetails,
+  status,
+}) => {
   const BUTTONS = (status) => {
     if (status === "PENDING") {
       return (
@@ -60,8 +71,8 @@ const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
         <ModalHeader toggle={toggle}></ModalHeader>
         <ModalBody>
           <div className="d-flex justify-content-between">
-            <h5>{docDetails.fileName}</h5>
-            <h5>{docDetails.fileNumber}</h5>
+            <h5>{documentDetails.fileName}</h5>
+            <h5>{documentDetails.fileNumber}</h5>
           </div>
           <Table bordered>
             <thead>
@@ -75,11 +86,11 @@ const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
             </thead>
             <tbody>
               <tr>
-                <td>{docDetails.from}</td>
-                <td>{docDetails.to}</td>
-                <td>{docDetails.sent}</td>
-                <td>{docDetails.received}</td>
-                <td>{docDetails.status}</td>
+                <td>{documentDetails.from}</td>
+                <td>{documentDetails.to}</td>
+                <td>{documentDetails.sent}</td>
+                <td>{documentDetails.received}</td>
+                <td>{documentDetails.status}</td>
               </tr>
             </tbody>
           </Table>
@@ -91,4 +102,4 @@ const DocumentDetails = ({ className, modal, toggle, docDetails, status }) => {
   );
 };
 
-export default DocumentDetails;
+export default connect(mapStateToProps)(DocumentDetails);

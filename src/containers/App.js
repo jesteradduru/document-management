@@ -4,33 +4,27 @@ import Register from "../components/Register/Register";
 import "bootstrap/dist/css/bootstrap.min.css";
 import User from "../containers/User";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isSignedIn: true,
-      name: "Jester Adduru",
-      type: "user",
-    };
-  }
-  render() {
-    const { isSignedIn } = this.state;
+import { connect } from "react-redux";
 
-    if (!isSignedIn) {
-      return (
-        <>
-          <Router>
-            <Switch>
-              <Route exact path="/" children={<Login />} />
-              <Route path="/register" children={<Register />} />
-            </Switch>
-          </Router>
-        </>
-      );
-    } else {
-      return <User />;
-    }
-  }
-}
+const mapStateToProps = (state) => ({
+  isSignedIn: state.loginUser.isSignedIn,
+});
 
-export default App;
+const App = ({ isSignedIn }) => {
+  if (!isSignedIn) {
+    return (
+      <>
+        <Router>
+          <Switch>
+            <Route exact path="/" children={<Login />} />
+            <Route path="/register" children={<Register />} />
+          </Switch>
+        </Router>
+      </>
+    );
+  } else {
+    return <User />;
+  }
+};
+
+export default connect(mapStateToProps)(App);
