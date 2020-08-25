@@ -1,7 +1,7 @@
 const initialState = {
   isSignedIn: true,
   username: "Jester Adduru",
-  type: "user",
+  type: "overseer",
 };
 
 export const loginUser = (state = initialState, action = {}) => {

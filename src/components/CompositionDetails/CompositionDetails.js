@@ -15,23 +15,30 @@ const mapStateToProps = (state) => ({
   documentDetails: state.viewDocDetails.documentDetails,
 });
 
-const DocumentDetails = ({ className, modal, toggle, documentDetails }) => {
+const CompositionDetails = ({ className, modal, toggle, documentDetails }) => {
   const BUTTONS = (status) => {
     if (status === "PENDING") {
       return (
         <>
-          <Button color="primary" onClick={toggle}>
-            Accept
-          </Button>{" "}
+          <Button color="secondary" onClick={toggle}>
+            Close
+          </Button>
+          <Button color="danger" onClick={toggle}>
+            Cancel
+          </Button>
+        </>
+      );
+    } else if (status === "APPROVED") {
+      return (
+        <>
           <Button color="secondary" onClick={toggle}>
             Close
           </Button>
         </>
       );
-    } else if (status === "ONPROCESS") {
+    } else {
       return (
         <>
-          <Button color="primary">Download & Edit</Button>
           <Button color="success" disabled onClick={toggle}>
             Send
           </Button>
@@ -40,13 +47,11 @@ const DocumentDetails = ({ className, modal, toggle, documentDetails }) => {
           </Button>
         </>
       );
-    } else {
-      return <></>;
     }
   };
 
   const sendDocForm = (status) => {
-    if (status === "ONPROCESS") {
+    if (status === "DISAPPROVED") {
       return (
         <>
           <FormGroup>
@@ -71,29 +76,25 @@ const DocumentDetails = ({ className, modal, toggle, documentDetails }) => {
           <Table bordered>
             <thead>
               <tr>
-                <th>FROM</th>
                 <th>TO</th>
-                <th>SENT</th>
-                <th>RECEIVED</th>
-                <th>STATUS</th>
+                <th>REMARKS</th>
+                <th>APPROVAL</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>{documentDetails.from}</td>
                 <td>{documentDetails.to}</td>
-                <td>{documentDetails.sent}</td>
-                <td>{documentDetails.received}</td>
-                <td>{documentDetails.status}</td>
+                <td>{documentDetails.remarks}</td>
+                <td>{documentDetails.checked}</td>
               </tr>
             </tbody>
           </Table>
-          {sendDocForm(documentDetails.status)}
+          {sendDocForm(documentDetails.checked)}
         </ModalBody>
-        <ModalFooter>{BUTTONS(documentDetails.status)}</ModalFooter>
+        <ModalFooter>{BUTTONS(documentDetails.checked)}</ModalFooter>
       </Modal>
     </div>
   );
 };
 
-export default connect(mapStateToProps)(DocumentDetails);
+export default connect(mapStateToProps)(CompositionDetails);

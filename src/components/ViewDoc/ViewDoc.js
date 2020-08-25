@@ -1,7 +1,7 @@
 import React from "react";
 import PrevPage from "../PrevPage/PrevPage";
 import { Button } from "reactstrap";
-const ComposeForm = ({ path }) => {
+const ViewDoc = ({ path }) => {
   return (
     <>
       <div className="d-flex">
@@ -28,4 +28,4 @@ const ComposeForm = ({ path }) => {
   );
 };
 
-export default ComposeForm;
+export default ViewDoc;

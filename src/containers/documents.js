@@ -8,6 +8,8 @@ const DOCUMENTS = [
     received: "",
     status: "PENDING",
     checked: "APPROVED",
+    remarks:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet error dolor repudiandae!",
   },
   {
     fileName: "Sample Document 2",
@@ -18,6 +20,8 @@ const DOCUMENTS = [
     received: "7-12-202",
     status: "ONPROCESS",
     checked: "APPROVED",
+    remarks:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet error dolor repudiandae!",
   },
   {
     fileName: "Sample Document 3",
@@ -28,6 +32,8 @@ const DOCUMENTS = [
     received: "7-12-202",
     status: "OUTGOING",
     checked: "APPROVED",
+    remarks:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet error dolor repudiandae!",
   },
   {
     fileName: "Sample Document 4",
@@ -38,6 +44,8 @@ const DOCUMENTS = [
     received: "7-12-202",
     status: "PENDING",
     checked: "PENDING",
+    remarks:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet error dolor repudiandae!",
   },
   {
     fileName: "Sample Document 5",
@@ -48,6 +56,8 @@ const DOCUMENTS = [
     received: "7-12-202",
     status: "PENDING",
     checked: "DISAPPROVED",
+    remarks:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet error dolor repudiandae!",
   },
   {
     fileName: "Sample Document 6",
@@ -58,6 +68,8 @@ const DOCUMENTS = [
     received: "7-12-202",
     status: "PENDING",
     checked: "APPROVED",
+    remarks:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet error dolor repudiandae!",
   },
 ];
 
