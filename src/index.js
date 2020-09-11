@@ -7,10 +7,10 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware, combineReducers } from "redux";
 import thunkMiddleware from "redux-thunk";
 import { createLogger } from "redux-logger";
-import { loginUser } from "./containers/AppReducer";
-import { viewDocDetails } from "./components/Document/DocumentReducer";
+import { user } from "./containers/AppReducer";
+import { documents } from "./components/Documents/DocumentReducers";
 
-const rootReducer = combineReducers({ loginUser, viewDocDetails });
+const rootReducer = combineReducers({ user, documents });
 const store = createStore(
   rootReducer,
   applyMiddleware(thunkMiddleware, createLogger())

@@ -3,23 +3,13 @@ import { connect } from "react-redux";
 import { viewDocDetails } from "./DocumentActions";
 
 const mapStateToProps = (state) => ({
-  documentDetails: state.viewDocDetails.documentDetails,
+  documentDetails: state.documents.documentDetails,
 });
 const mapDispatchToProps = (dispatch) => ({
   onViewDocumentDetails: (document) => dispatch(viewDocDetails(document)),
 });
 
-const Composition = ({
-  fileName,
-  from,
-  to,
-  fileNumber,
-  document,
-  checked,
-  toggle,
-  remarks,
-  onViewDocumentDetails,
-}) => {
+const Composition = ({ document, checked, toggle, onViewDocumentDetails }) => {
   switch (checked) {
     default:
       return (
@@ -29,9 +19,9 @@ const Composition = ({
             toggle();
           }}
         >
-          <td>{fileName}</td>
-          <td>{to}</td>
-          <td>{remarks}</td>
+          <td>{document.filename}</td>
+          <td>{document.to_user}</td>
+          <td>{document.remarks}</td>
           <td>{document.checked}</td>
         </tr>
       );
@@ -44,9 +34,9 @@ const Composition = ({
             toggle();
           }}
         >
-          <td>{fileName}</td>
-          <td>{to}</td>
-          <td>{remarks}</td>
+          <td>{document.filename}</td>
+          <td>{document.to_user}</td>
+          <td>{document.remarks}</td>
           <td>{document.checked}</td>
         </tr>
       );
@@ -59,9 +49,9 @@ const Composition = ({
             toggle();
           }}
         >
-          <td>{fileName}</td>
-          <td>{to}</td>
-          <td>{remarks}</td>
+          <td>{document.filename}</td>
+          <td>{document.to_user}</td>
+          <td>{document.remarks}</td>
           <td>{document.checked}</td>
         </tr>
       );

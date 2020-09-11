@@ -10,17 +10,35 @@ import {
   Input,
 } from "reactstrap";
 import { connect } from "react-redux";
-
+import { AcceptDocument, DownloadDocument } from "../DocumentActions";
 const mapStateToProps = (state) => ({
-  documentDetails: state.viewDocDetails.documentDetails,
+  documentDetails: state.documents.documentDetails,
 });
 
-const DocumentDetails = ({ className, modal, toggle, documentDetails }) => {
+const mapDispatchToProps = (dispatch) => ({
+  onAcceptDoc: (id) => dispatch(AcceptDocument(id)),
+  onDownloadDoc: (id) => dispatch(DownloadDocument(id)),
+});
+
+const DocumentDetails = ({
+  className,
+  modal,
+  toggle,
+  documentDetails,
+  onAcceptDoc,
+  onDownloadDoc,
+}) => {
   const BUTTONS = (status) => {
     if (status === "PENDING") {
       return (
         <>
-          <Button color="primary" onClick={toggle}>
+          <Button
+            color="primary"
+            onClick={() => {
+              toggle();
+              onAcceptDoc(documentDetails.id);
+            }}
+          >
             Accept
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>
@@ -31,7 +49,15 @@ const DocumentDetails = ({ className, modal, toggle, documentDetails }) => {
     } else if (status === "ONPROCESS") {
       return (
         <>
-          <Button color="primary">Download & Edit</Button>
+          <Button
+            color="primary"
+            onClick={() => {
+              toggle();
+              onDownloadDoc(documentDetails.id);
+            }}
+          >
+            Download & Edit
+          </Button>
           <Button color="success" disabled onClick={toggle}>
             Send
           </Button>
@@ -61,14 +87,19 @@ const DocumentDetails = ({ className, modal, toggle, documentDetails }) => {
   };
   return (
     <div>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
+      <Modal
+        isOpen={modal}
+        toggle={toggle}
+        className={className}
+        style={{ maxWidth: "1000px" }}
+      >
         <ModalHeader toggle={toggle}></ModalHeader>
         <ModalBody>
           <div className="d-flex justify-content-between">
-            <h5>{documentDetails.fileName}</h5>
-            <h5>{documentDetails.fileNumber}</h5>
+            <h5>{documentDetails.filename}</h5>
+            <h5>{documentDetails.id}</h5>
           </div>
-          <Table bordered>
+          <Table bordered responsive>
             <thead>
               <tr>
                 <th>FROM</th>
@@ -80,10 +111,10 @@ const DocumentDetails = ({ className, modal, toggle, documentDetails }) => {
             </thead>
             <tbody>
               <tr>
-                <td>{documentDetails.from}</td>
-                <td>{documentDetails.to}</td>
-                <td>{documentDetails.sent}</td>
-                <td>{documentDetails.received}</td>
+                <td>{documentDetails.from_user}</td>
+                <td>{documentDetails.to_user}</td>
+                <td>{documentDetails.date_sent}</td>
+                <td>{documentDetails.date_received}</td>
                 <td>{documentDetails.status}</td>
               </tr>
             </tbody>
@@ -96,4 +127,4 @@ const DocumentDetails = ({ className, modal, toggle, documentDetails }) => {
   );
 };
 
-export default connect(mapStateToProps)(DocumentDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(DocumentDetails);

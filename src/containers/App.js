@@ -7,17 +7,17 @@ import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
-  isSignedIn: state.loginUser.isSignedIn,
+  isSignedIn: state.user.isSignedIn,
 });
 
 const App = ({ isSignedIn }) => {
-  if (!isSignedIn) {
+  if (isSignedIn === "false") {
     return (
       <>
         <Router>
           <Switch>
             <Route exact path="/" children={<Login />} />
-            <Route path="/register" children={<Register />} />
+            <Route exact path="/register" children={<Register />} />
           </Switch>
         </Router>
       </>

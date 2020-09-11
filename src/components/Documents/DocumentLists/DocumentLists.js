@@ -3,33 +3,23 @@ import { Table } from "reactstrap";
 import Document from "../Document/Document";
 import DocumentDetails from "../DocumentDetails/DocumentDetails";
 import "./DocumentList.css";
-import DOCUMENTS from "../../containers/documents";
-
 const DocumentLists = ({
   status,
-  showDocDetails,
-  docDetails,
   checked,
-  userType,
+  userType = "user",
+  documents = [],
 }) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   if (userType === "user") {
-    const document = DOCUMENTS.filter(
-      (document) => document.status === status && document.checked === checked
-    ).map((document) => {
-      return (
-        <Document
-          fileName={document.fileName}
-          from={document.from}
-          to={document.to}
-          fileNumber={document.fileNumber}
-          document={document}
-          toggle={toggle}
-        />
-      );
-    });
+    const document = documents
+      .filter(
+        (document) => document.status === status && document.checked === checked
+      )
+      .map((document) => {
+        return <Document document={document} toggle={toggle} />;
+      });
     return (
       <div>
         <Table responsive hover bordered>
@@ -47,17 +37,8 @@ const DocumentLists = ({
       </div>
     );
   } else {
-    const document = DOCUMENTS.map((document) => {
-      return (
-        <Document
-          fileName={document.fileName}
-          from={document.from}
-          to={document.to}
-          fileNumber={document.fileNumber}
-          document={document}
-          toggle={toggle}
-        />
-      );
+    const document = documents.map((document) => {
+      return <Document document={document} toggle={toggle} />;
     });
     return (
       <div>
